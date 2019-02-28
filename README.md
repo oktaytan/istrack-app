@@ -5,5 +5,5 @@ A simple task distribution and follow-up application and too much development ne
 ## Preview
 
 <div align="center">
-  <img alt="review" src="./img/review-app.gif" />
+  <img alt="review" src="./img/review.gif" />
 </div>
