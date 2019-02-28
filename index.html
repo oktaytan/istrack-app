@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./css/app.css">
+  <title>istrack app</title>
+  <script>
+    if (JSON.parse(localStorage.getItem('user')) === null) {
+        location.href = './login.html'
+      }
+    </script>
+</head>
+
+<body>
+  <div class="container" id="app">
+    <header class="main__header">
+      <span class="user"></span>
+      <img class="avatar" src="./img/avatar.svg" alt="avatar">
+      <ul class="menu">
+        <li class="menu__item"><a class="menu__link" href="#!">My Account</a></li>
+        <li class="menu__item"><a class="menu__link" href="#!">My Tasks</a></li>
+        <li class="menu__item"><a class="menu__link" href="#!">Settings</a></li>
+        <li id="logout" class="menu__item"><a class="menu__link" href="./login.html">Logout</a></li>
+      </ul>
+      <a class="logo" href="./index.html"><img src="./img/istrack.svg" alt="logo"></a>
+    </header>
+    <section class="add__task">
+      <div class="message__alert">
+        <h3 class="message_valid">Add new task</h3>
+        <div class="message_invalid">Please fill in all fields.</div>
+      </div>
+      <form id="addTask" class="">
+        <div class="form__control">
+          <label for="description">Description</label>
+          <input type="text" id="description" autocomplete="off" placeholder="Description">
+        </div>
+        <div class="form__control">
+          <label for="severity">Severity</label>
+          <div class="custom-select">
+            <select id="severity">
+              <option value="low">Low</option>
+              <option value="medium">Medium</option>
+              <option value="high">High</option>
+            </select>
+          </div>
+        </div>
+        <div class="form__control">
+          <label for="team">Team</label>
+          <input type="text" id="team" autocomplete="off" placeholder="Team">
+        </div>
+        <button class="btn" type="submit">Add</button>
+      </form>
+    </section>
+    <section class="list__task" id="taskList"></section>
+  </div>
+  <script src="./js/app.js"></script>
+</body>
+
+</html>

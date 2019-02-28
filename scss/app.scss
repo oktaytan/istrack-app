@@ -1,0 +1,459 @@
+@import 'normalize';
+@import 'colors';
+@import 'global';
+@import 'customSelect';
+
+#app {
+  background-image: url('../img/body-bg.svg');
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+
+// HEADER
+.main__header {
+  width: 100%;
+  min-height: 7.4rem;
+  position: relative;
+
+  .menu {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    right: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    bottom: -10rem;
+    text-align: right;
+    background-color: $bg_color;
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.3rem 1rem;
+    transition: trans(all);
+    z-index: 3;
+
+    &.show {
+      visibility: visible;
+      opacity: 1;
+      bottom: -8.6rem;
+    }
+  }
+
+  .menu__link {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 700;
+    font-style: italic;
+    color: $color_3;
+    padding: 0.5rem 0;
+    transition: trans(color);
+
+    &:hover {
+      color: $color_1;
+    }
+  }
+
+  .avatar {
+    position: absolute;
+    top: 2.5rem;
+    right: 2.8rem;
+    background: $bg_color;
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: trans(box-shadow);
+
+    &:hover {
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+.user {
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+  color: $color_2;
+  background-color: #fff;
+  padding: 0.1rem 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  position: absolute;
+  top: 0.5rem;
+  transition: trans(transform);
+  transform: scale(0);
+
+  &.show {
+    transform: scale(1);
+  }
+
+  &::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-color: #fff transparent transparent transparent;
+    border-width: 8px;
+    border-bottom-width: 0;
+    border-style: solid;
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 4.375rem;
+  left: 2.3rem;
+  text-decoration: none;
+}
+
+// ADD task
+.add__task {
+  width: 18.875rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  .message__alert {
+    position: relative;
+
+    .message_valid {
+      padding: 0;
+      margin: 0;
+      margin-bottom: 1.25rem;
+      font-weight: 700;
+      font-style: italic;
+      color: $color_2;
+      transition: trans(all);
+
+      &.hide {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0);
+      }
+    }
+
+    .message_invalid {
+      width: 18.875rem;
+      min-height: 2.2rem;
+      background-color: rgba($color_4, 0.7);
+      border-radius: 0.4rem;
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      font-weight: 700;
+      font-style: italic;
+      color: darken($color_4, 15);
+      transform: translate(-50%, -50%) scale(0);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: trans(all);
+      transform-origin: center;
+      opacity: 0;
+      visibility: hidden;
+
+      &.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+  }
+
+}
+
+#addTask {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  transition: trans(transform);
+
+  .form__control {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+
+    .custom-select {
+      width: 100%;
+    }
+
+    label {
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1rem;
+      color: $color_3;
+      margin-bottom: 0.625rem;
+    }
+
+    input {
+      width: 100%;
+      height: 2.2rem;
+      outline: none;
+      border: 2px solid $color_3;
+      border-radius: 0.5rem;
+      padding: 0 0.5rem;
+      line-height: 1;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 0.875rem;
+      color: $color_3;
+      transition: trans(all);
+
+      &:focus {
+        border-color: $color_1;
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+      }
+    }
+  }
+}
+
+.btn {
+  background: none;
+  border: none;
+  background-color: $color_2;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.4rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #fff;
+  transition: trans(all);
+  outline: none;
+
+  &:hover {
+    background-color: $color_1;
+    color: $color_2;
+  }
+}
+
+::placeholder {
+  font-weight: 700;
+  font-style: italic;
+  font-size: 0.875rem;
+  color: $color_5;
+}
+
+
+// task LIST
+.list__task {
+  width: 100%;
+  margin-top: 3.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 1.25rem;
+  transition: trans(all);
+
+  .empty__list {
+    font-weight: 700;
+    font-style: italic;
+    color: $color_3;
+    font-style: 1rem;
+    width: 12rem;
+    min-height: 2.2rem;
+    background-color: $bg_color;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 0;
+
+    span {
+      margin-bottom: 0.3rem;
+    }
+
+    .user__name {
+      color: $color_1;
+      font-size: 1.1rem;
+      margin-left: 0.5rem;
+    }
+  }
+}
+
+.task {
+  width: 100%;
+  background-color: $bg_color;
+  border-radius: 0.625rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid $color_2;
+  transition: trans(all);
+
+  &:hover {
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.4);
+    border-color: $color_4;
+  }
+
+  .task__title {
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    font-style: italic;
+    color: $color_3;
+    margin-bottom: 0.5rem;
+  }
+
+  .task__status {
+    display: inline-block;
+    line-height: 1.2;
+    font-weight: 700;
+    font-size: 0.75rem;
+    font-style: italic;
+    padding: 0.2rem 0.8rem;
+    border-radius: 1rem;
+    margin-bottom: 0.5rem;
+    z-index: 1;
+    transition: trans(all);
+    transform-origin: center;
+    color: darken($color_7, 20);
+    background-color: $color_7;
+    transform: scale(1);
+
+    &.open {
+      background-color: $color_7;
+      color: darken($color_7, 20);
+    }
+
+    &.close {
+      background-color: $color_4;
+      color: darken($color_4, 30);
+    }
+  }
+
+  .task__content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    color: $color_2;
+    margin-bottom: 0.8rem;
+  }
+
+  .task__icons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    .task__icon {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-right: 1rem;
+      margin-bottom: 0.6rem;
+
+      .fa-signal {
+        font-size: 0.8rem;
+        color: $color_6;
+        margin-right: 0.3rem;
+
+        &.low {
+          color: $color_6;
+        }
+
+        &.medium {
+          color: $color_7;
+        }
+
+        &.high {
+          color: $color_4;
+        }
+      }
+
+      .task__severity,
+      .task__author,
+      .task__team {
+        font-weight: 700;
+        font-size: 0.8rem;
+        color: $color_3;
+      }
+
+      .task__severity {
+
+        &.low {
+          color: $color_6;
+        }
+
+        &.medium {
+          color: $color_7;
+        }
+
+        &.high {
+          color: $color_4;
+        }
+      }
+
+      .fa-user-alt,
+      .fa-sitemap {
+        font-size: 0.8rem;
+        color: $color_3;
+        margin-right: 0.3rem;
+      }
+    }
+
+    .task__buttons {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+    }
+  }
+}
+
+.task__close,
+.task__delete {
+  font-size: 0.8rem;
+  background-color: $color_1;
+  width: 4rem;
+  height: 1.7rem;
+  line-height: 1.25rem;
+  border-radius: 0.3rem;
+  color: $color_2;
+  margin: 0;
+  margin-right: 0.5rem;
+  padding: 0;
+
+  &:hover {
+    background-color: darken($color_1, 15);
+  }
+}
+
+.task__close {
+  &.close {
+    user-select: none;
+    pointer-events: none;
+    background-color: $color_3;
+  }
+}
+
+.task__delete {
+  background-color: $color_4;
+  color: #fff;
+
+  &:hover {
+    background-color: darken($color_4, 15);
+    color: #fff;
+  }
+}
